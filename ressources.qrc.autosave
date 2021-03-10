@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>images/add.png</file>
+        <file>images/aza.jpg</file>
+        <file>images/customer (2).png</file>
+        <file>images/form.jpg</file>
+        <file>images/gym.PNG</file>
+        <file>images/gym2.jpg</file>
+        <file>images/gym3.jpg</file>
+        <file>images/gym4.jpg</file>
+        <file>images/gym5.jpg</file>
+        <file>images/pp.jpg</file>
+        <file>images/Ressources.cpp</file>
+        <file>images/ressources.qrc</file>
+        <file>images/rrrr.jpg</file>
+        <file>images/skills.png</file>
+        <file>images/sports.png</file>
+    </qresource>
+</RCC>
