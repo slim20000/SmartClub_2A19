@@ -53,6 +53,17 @@ void Evenement::setprenom(QString prenom)
     this->prenom=prenom;
 }
 
+bool Evenement::update(){
+    QString res=QString::number(id);
+    QSqlQuery query;
+
+    query.prepare("UPDATE Evenement SET id=:id, nom=:nom,prenom=:prenom where id=:id");
+    query.bindValue(0, res);
+    query.bindValue(1, nom);
+    query.bindValue(2, prenom);
+     return query.exec();
+}
+
 bool Evenement::ajouter()
 {
     bool test = true;
@@ -90,13 +101,13 @@ query.bindValue(0, id);
 return query.exec();
 }
 
-QSqlQueryModel * Evenement::search(QString nom)
-{
-    QSqlQueryModel* model = new QSqlQueryModel();
-     model->setQuery("select * from Evenement where (nom LIKE '%"+nom+"%') ");
-     model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
-     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
-     model->setHeaderData(2, Qt::Horizontal, QObject::tr("Prenom"));
+//QSqlQueryModel * Evenement::search(QString nom)
+//{
+//    QSqlQueryModel* model = new QSqlQueryModel();
+//     model->setQuery("select * from Evenement where (nom LIKE '%"+nom+"%') ");
+//     model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+//     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
+//     model->setHeaderData(2, Qt::Horizontal, QObject::tr("Prenom"));
 
-     return model;
-}
+//     return model;
+//}
