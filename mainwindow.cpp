@@ -86,8 +86,31 @@ else
     msgBox.exec();
 }
 
-void MainWindow::on_b_search_clicked()
+void MainWindow::on_update_clicked()
 {
-    ui->setupUi(this);
-    ui->table_eve->setModel(Etmp.search(QString Nom));
+    int id=ui->le_id->text().toInt();
+    QString nom=ui->le_nom->text();
+    QString prenom=ui->le_prenom->text();
+    Evenement E(id,nom,prenom);
+    bool test=E.update();
+    if (test)
+    {
+        ui->table_eve->setModel(E.afficher());
+
+        QMessageBox::information(nullptr,QObject::tr("OK"),
+                QObject::tr("Modification effectue\n"
+                              "Click cancel to exit ."),QMessageBox::Cancel);
+        ui->table_eve->setModel(Etmp.afficher());
+    }
+    else
+
+        QMessageBox::critical(nullptr,QObject::tr("OK"),
+                QObject::tr("Modification non effectue\n"
+                              "Click cancel to exit ."),QMessageBox::Cancel);
 }
+
+//void MainWindow::on_b_search_clicked()
+//{
+//    ui->setupUi(this);
+//    ui->table_eve->setModel(Etmp.search(QString nom));
+//}
