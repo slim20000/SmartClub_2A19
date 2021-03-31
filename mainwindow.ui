@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -136,14 +136,27 @@
       <widget class="QPushButton" name="b_ajouter">
        <property name="geometry">
         <rect>
-         <x>340</x>
-         <y>160</y>
+         <x>350</x>
+         <y>130</y>
          <width>111</width>
          <height>51</height>
         </rect>
        </property>
        <property name="text">
         <string>Ajouter</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="update">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>220</y>
+         <width>101</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Modifier</string>
        </property>
       </widget>
      </widget>
