@@ -34,7 +34,8 @@ public:
     bool ajouter();
     QSqlQueryModel* afficher();
     bool supprimer(int);
-    QSqlQueryModel * search(QString);
+    bool update();
+//    QSqlQueryModel * search(QString);
 
 
 private:
