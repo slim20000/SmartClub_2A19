@@ -17,6 +17,12 @@
 #include <QSqlQuery>
 #include <QtDebug>
 #include <QObject>
+#include <QPrintDialog>
+#include <QPrinter>
+#include "sponsor.h"
+
+//Test tuto Git
+
 
 connexion::connexion()
 {

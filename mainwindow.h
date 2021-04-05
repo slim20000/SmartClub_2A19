@@ -19,6 +19,9 @@
 #include <QSqlQuery>
 #include <QtDebug>
 #include <QObject>
+#include <QPrintDialog>
+#include <QPrinter>
+#include "sponsor.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -42,8 +45,19 @@ private slots:
 
     void on_b_search_clicked();
 
+    void on_update_clicked();
+
+    void on_actionImprimer_triggered();
+
+    void on_table_eve_activated(const QModelIndex &index);
+
+    void on_pb_aj_clicked();
+
+    void on_pb_mod_clicked();
+
 private:
     Ui::MainWindow *ui;
     Evenement Etmp;
+    sponsor SP;
 };
 #endif // MAINWINDOW_H

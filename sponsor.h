@@ -1,5 +1,5 @@
-#ifndef EVENEMENT_H
-#define EVENEMENT_H
+#ifndef SPONSOR_H
+#define SPONSOR_H
 #include <QMainWindow>
 #include <QMainWindow>
 #include <QMessageBox>
@@ -21,13 +21,13 @@
 #include <QObject>
 #include <QPrintDialog>
 #include <QPrinter>
-#include "sponsor.h"
 
-class Evenement
+
+class sponsor
 {
 public:
-    Evenement();
-    Evenement(int,QString,QString);
+    sponsor();
+    sponsor(int,QString);
     int getid();
     QString getnom();
     QString getprenom();
@@ -35,15 +35,15 @@ public:
     void setnom(QString);
     void setprenom(QString);
     bool ajouter();
-    QSqlQueryModel* afficher();
+    QSqlQueryModel* affichersp();
     bool supprimer(int);
     bool update();
     QSqlQueryModel * search(QString);
 
 
 private:
-    int id_eve;
-    QString nom_eve, type_eve;
+    int id_sp;
+    QString nom_sp;
 };
 
-#endif // EVENEMENT_H
+#endif // SPONSOR_H

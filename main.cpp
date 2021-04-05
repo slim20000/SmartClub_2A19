@@ -18,6 +18,14 @@
 #include <QSqlQuery>
 #include <QtDebug>
 #include <QObject>
+#include <QPrintDialog>
+#include <QPrinter>
+#include "sponsor.h"
+
+#include <QApplication>
+#include <QStandardItem>
+#include <QStandardItemModel>
+#include <QTableView>
 
 
 int main(int argc, char *argv[])
@@ -36,5 +44,25 @@ int main(int argc, char *argv[])
     else
         QMessageBox::critical(nullptr, QObject::tr("Database is not open"), QObject::tr("Connection failed.\n",
                               "Click Cancel to exit"), QMessageBox::Cancel);
-    return a.exec();
+
+
+//        QTableView table_sp;
+//        QStandardItemModel model{ 0, 1 };
+//        QStandardItem insertRow{ "<Click to add new item>" };
+//        insertRow.setEditable(false);
+
+//        table_sp.setModel(&model);
+//        model.insertRow(0, &insertRow);
+
+//        QApplication::connect(&table_sp, &QTableView::doubleClicked,
+//                [&model](const QModelIndex index)
+//        {
+//            int rowCount = model.rowCount();
+//            if (index.row() == rowCount - 1)
+//                model.insertRow(rowCount - 1, new QStandardItem{ "New item" });
+//        });
+
+//            table_sp.show();
+
+            return a.exec();
 }

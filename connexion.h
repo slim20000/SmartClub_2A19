@@ -18,6 +18,9 @@
 #include <QSqlQuery>
 #include <QtDebug>
 #include <QObject>
+#include <QPrintDialog>
+#include <QPrinter>
+#include "sponsor.h"
 class connexion
 {
     QSqlDatabase db;

@@ -15,10 +15,13 @@
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QMessageBox>
+#include "sponsor.h"
 #include "evenement.h"
 #include <QSqlQuery>
 #include <QtDebug>
 #include <QObject>
+#include <QPrintDialog>
+#include <QPrinter>
 
 #include <QtGui/qtguiglobal.h>
 #include <QtGui/qcolor.h>
@@ -38,6 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->table_eve->setModel(Etmp.afficher());
+    ui->table_sp->setModel(SP.affichersp());
 }
 
 MainWindow::~MainWindow()
@@ -52,10 +56,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_b_ajouter_clicked()
 {
-        int id=ui->le_id->text().toInt();
-        QString nom=ui->le_nom->text();
+        int id_eve=ui->le_id->text().toInt();
+        QString nom_eve=ui->le_nom->text();
         QString prenom=ui->le_prenom->text();
-        Evenement E(id,nom,prenom);
+        Evenement E(id_eve,nom_eve,prenom);
         bool test=E.ajouter();
         if(test)
         {
@@ -88,10 +92,10 @@ else
 
 void MainWindow::on_update_clicked()
 {
-    int id=ui->le_id->text().toInt();
-    QString nom=ui->le_nom->text();
-    QString prenom=ui->le_prenom->text();
-    Evenement E(id,nom,prenom);
+    int id_eve=ui->le_id->text().toInt();
+    QString nom_eve=ui->le_nom->text();
+    QString type_eve=ui->le_prenom->text();
+    Evenement E(id_eve,nom_eve,type_eve);
     bool test=E.update();
     if (test)
     {
@@ -109,8 +113,82 @@ void MainWindow::on_update_clicked()
                               "Click cancel to exit ."),QMessageBox::Cancel);
 }
 
-//void MainWindow::on_b_search_clicked()
+void MainWindow::on_b_search_clicked()
+{
+    int id_eve=ui->chercher->text().toInt();
+
+
+        QString nom_eve=ui->chercher->text();
+        QString type_eve=ui->chercher->text();
+
+        Evenement Etmp(id_eve,type_eve,nom_eve);
+        bool test=Etmp.search(Etmp.getnom());
+        if (test)
+        {
+            ui->table_eve->setModel(Etmp.afficher());
+          ui->table_eve->setModel(Etmp.search(nom_eve));
+
+           // QMessageBox::information(nullptr,QObject::tr("OK"),
+                   // QObject::tr("ajout effectue\n"
+                                 // "Click cancel to exit ."),QMessageBox::Cancel);
+        }
+        //else
+
+            //QMessageBox::critical(nullptr,QObject::tr("OK"),
+                    //QObject::tr("ajout effectue\n"
+                                //  "Click cancel to exit ."),QMessageBox::Cancel);
+
+}
+
+
+//void MainWindow::on_actionImprimer_triggered()
 //{
-//    ui->setupUi(this);
-//    ui->table_eve->setModel(Etmp.search(QString nom));
+//    QPrinter printer;
+//    printer.setPrinterName("client PDF");
+//    QPrintDialog dialog(&printer,this);
+//    if (dialog.exec() ==QDialog::Rejected) return;
+//    ui->table_eve->print(&printer);
+
 //}
+
+void MainWindow::on_pb_aj_clicked()
+{
+    int id_sp=ui->el_id->text().toInt();
+    QString nom_sp=ui->el_nom->text();
+    sponsor SP(id_sp,nom_sp);
+    bool test=SP.ajouter();
+    if(test)
+    {
+        QMessageBox::information(nullptr, QObject::tr("OK"),
+                                 QObject::tr("Ajout effectué\n"
+                                             "Click Cancel  to exit."), QMessageBox::Cancel);
+        ui->table_sp->setModel(SP.affichersp());
+    }
+    else
+        QMessageBox::critical(nullptr, QObject::tr("Not OK"),
+                              QObject::tr("Ajout non effectué\n"
+                                          "Click Cancel to exit"), QMessageBox::Cancel);
+}
+
+
+void MainWindow::on_pb_mod_clicked()
+{
+    int id_sp=ui->el_id->text().toInt();
+    QString nom_sp=ui->el_nom->text();
+    sponsor SP(id_sp,nom_sp);
+    bool test=SP.update();
+    if (test)
+    {
+        ui->table_sp->setModel(SP.affichersp());
+
+        QMessageBox::information(nullptr,QObject::tr("OK"),
+                QObject::tr("Modification effectue\n"
+                              "Click cancel to exit ."),QMessageBox::Cancel);
+        ui->table_sp->setModel(SP.affichersp());
+    }
+    else
+
+        QMessageBox::critical(nullptr,QObject::tr("OK"),
+                QObject::tr("Modification non effectue\n"
+                              "Click cancel to exit ."),QMessageBox::Cancel);
+}
