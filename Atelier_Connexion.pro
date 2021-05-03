@@ -29,19 +29,23 @@ CONFIG += c++11
 SOURCES += \
     equipement.cpp \
     etudiant.cpp \
+    evenement.cpp \
         main.cpp \
         mainwindow.cpp \
     connection.cpp \
     produit.cpp \
+    sponsor.cpp \
     type.cpp
 
 HEADERS += \
     equipement.h \
     etudiant.h \
+    evenement.h \
         mainwindow.h \
     connection.h \
     print.h \
     produit.h \
+    sponsor.h \
     tableprinter.h \
     type.h
 

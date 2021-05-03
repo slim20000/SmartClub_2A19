@@ -27,7 +27,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>11</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_4">
      <property name="styleSheet">
@@ -2853,7 +2853,7 @@ color:red;}</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">QGroupBox{Background-image: url(:/images/gym off.jpg);}</string>
+       <string notr="true">Background-image: url(:/images/gym off.jpg);</string>
       </property>
       <property name="title">
        <string/>
@@ -3380,7 +3380,8 @@ QPushButton:focus {
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">https://github.com/slim20000/SmartClub_2A19/branches</string>
+       <string notr="true">QGroupBox{
+	background-image: url(:/images/gym off.jpg);}</string>
       </property>
       <property name="title">
        <string/>
@@ -7173,7 +7174,7 @@ QTableWidget QTableCornerButton::section {
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">QGroupBox{Background-image: url(:/images/gym off.jpg);}</string>
+       <string notr="true">Background-image: url(:/images/gym off.jpg);</string>
       </property>
       <property name="title">
        <string/>

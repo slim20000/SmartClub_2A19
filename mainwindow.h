@@ -14,6 +14,8 @@
 #include "type.h"
 #include "produit.h"
 #include "equipement.h"
+#include "evenement.h"
+#include "sponsor.h"
 
 #include <QtCharts>
 #include <QChartView>
@@ -220,6 +222,48 @@ void myfunction();
 
     void on_actionCAPTURE_triggered();
 
+    void on_equip_2_clicked();
+
+    void on_prod_2_clicked();
+
+    void on_commandLinkButton_18_clicked();
+
+    void on_commandLinkButton_19_clicked();
+
+    void on_commandLinkButton_20_clicked();
+
+    void on_b_ajouter_clicked();
+
+    void on_add1_8_clicked();
+
+    void on_b_supprimer_clicked();
+
+    void on_b_search_clicked();
+
+    void on_pushButton_23_clicked();
+
+    void on_tri_eve_clicked();
+
+    void on_update_3_clicked();
+
+    void on_commandLinkButton_21_clicked();
+
+    void on_add1_10_clicked();
+
+    void on_pb_aj_clicked();
+
+    void on_pb_mod_clicked();
+
+    void on_pb_sup_clicked();
+
+    void on_pb_recherche_clicked();
+
+    void on_pushButton_24_clicked();
+
+    void on_pushButton_25_clicked();
+
+    void on_commandLinkButton_22_clicked();
+
 private:
 
 
@@ -235,6 +279,8 @@ QTimer *timer;
     type t;
  produit P;
  equipement k;
+ Evenement Ev;
+ sponsor SP;
 };
 
 #endif // MAINWINDOW_H

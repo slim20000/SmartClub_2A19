@@ -7,6 +7,8 @@
 #include "etudiant.h"
 #include "type.h"
 #include "equipement.h"
+#include "evenement.h"
+#include "sponsor.h"
 
 #include "tableprinter.h"
 #include <QPrintPreviewDialog>
@@ -221,6 +223,9 @@ QBarSet *set0 = new QBarSet("Blue Pass-sport");
         ui->mod->setIcon(QIcon(":/images/skills.png"));
          ui->supp2->setIcon(QIcon(":/images/remove (1).png"));
 
+        ui->pushButton_5->setIcon(QIcon(":/images/customer (2).png"));
+        ui->pushButton_9->setIcon(QIcon(":/images/sports.png"));
+
          ui->pushButton->setIcon(QIcon(":/images/search.png"));
          ui->rech2->setIcon(QIcon(":/images/search.png"));
 
@@ -262,6 +267,8 @@ QBarSet *set0 = new QBarSet("Blue Pass-sport");
     //ui->combo->setModel(E.afficher());
     ui->tab1_2->setModel(k.afficher1());
     ui->tab_etudiant_6->setModel(k.afficher1());
+    ui->table_eve->setModel(Ev.afficher());
+    ui->table_sp->setModel(SP.affichersp());
 
 }
 
@@ -703,7 +710,7 @@ QString refTitleName;
 
 
 
-                "<img src='D:/exerciceee/Atelier_Connexion/logo.png'>"
+                "<img src='D:/exerciceee/integration/Atelier_Connexion/logo.png'>"
 "<h1>Tel: 29109983/45845634</h1>\n"
 "<h2>Email :Fitnessgym@gmail.com</h2>\n"
 "<center><h1>PDF client</h1></center>\n"
@@ -801,7 +808,7 @@ void MainWindow::on_commandLinkButton_9_clicked()
 
 void MainWindow::on_pushButton_8_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(10);
+    ui->stackedWidget->setCurrentIndex(21);
 
 }
 
@@ -820,7 +827,7 @@ QString refTitleName;
                 <<  QString("<title>%1</title>\n").arg(refTitleName)
                 <<  "</head>\n"
                     "<body bgcolor=#ffffff link=#5000A0>\n"
-                "<img src='D:/exerciceee/Atelier_Connexion/logo.png'>"
+                "<img src='D:/exerciceee/integration/Atelier_Connexion/logo.png'>"
 "<h1>Tel: 29109983/45845634</h1>\n"
 "<h2>Email :Fitnessgym@gmail.com</h2>\n"
 "<center><h1>PDF Type de sport </h1></center>\n"
@@ -1256,7 +1263,7 @@ void MainWindow::on_pushButton_17_clicked()
                     <<  QString("<title>%1</title>\n").arg(refTitleName)
                     <<  "</head>\n"
                         "<body bgcolor=#ffffff link=#5000A0>\n"
-                    "<img src='D:/exerciceee/Atelier_Connexion/logo.png'>"
+                    "<img src='D:/exerciceee/integration/Atelier_Connexion/logo.png'>"
     "<h1>Tel: 29109983/45845634</h1>\n"
     "<h2>Email :Fitnessgym@gmail.com</h2>\n"
     "<center><h1>PDF produit </h1></center>\n"
@@ -1664,5 +1671,433 @@ void MainWindow::on_commandLinkButton_17_clicked()
 
 void MainWindow::on_actionCAPTURE_triggered()
 {
+
+}
+
+void MainWindow::on_equip_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(22);
+
+}
+
+void MainWindow::on_prod_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(23);
+
+}
+
+void MainWindow::on_commandLinkButton_18_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(11);
+
+}
+
+void MainWindow::on_commandLinkButton_19_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(21);
+
+}
+
+void MainWindow::on_commandLinkButton_20_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(21);
+
+}
+
+void MainWindow::on_b_ajouter_clicked()
+{
+        int id_eve=ui->le_id_3->text().toInt();
+        QDate day_eve=ui->dateEdit_3->date();
+        QString nom_eve=ui->le_nom_3->text();
+        QString type_eve=ui->le_prenom_2->text();
+        Evenement Ev(id_eve,nom_eve,type_eve,day_eve);
+        bool test=Ev.ajouter();
+        if(test)
+        {
+            QMessageBox::information(nullptr, QObject::tr("OK"),
+                                     QObject::tr("Ajout effectué\n"
+                                                 "Click Cancel  to exit."), QMessageBox::Cancel);
+            ui->table_eve->setModel(Ev.afficher());
+        }
+        else
+            QMessageBox::critical(nullptr, QObject::tr("Not OK"),
+                                  QObject::tr("Ajout non effectué\n"
+                                              "Click Cancel to exit"), QMessageBox::Cancel);
+}
+
+
+void MainWindow::on_add1_8_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(24);
+
+}
+
+void MainWindow::on_b_supprimer_clicked()
+{
+    Evenement Ev1;
+    Ev1.setid(ui->le_id_supp_4->text().toInt());
+    bool test=Ev1.supprimer(Ev1.getid());
+    QMessageBox msgBox;
+
+    if (test)
+    {
+        ui->table_eve->setModel(Ev.afficher());
+        //ui->tab_etudiant_3->setModel(E.afficher());
+
+        QMessageBox::information(nullptr,QObject::tr("OK"),
+                QObject::tr("suppression effectue\n"
+                            "Click cancel to exit ."),QMessageBox::Cancel);
+    }
+    else
+
+        QMessageBox::critical(nullptr,QObject::tr("OK"),
+                QObject::tr("suppression effectue\n"
+                              "Click cancel to exit ."),QMessageBox::Cancel);
+    }
+
+void MainWindow::on_b_search_clicked()
+{
+    int id_eve=ui->chercher->text().toInt();
+
+    QDate day_eve=ui->dateEdit_3->date();
+
+        QString nom_eve=ui->chercher->text();
+        QString type_eve=ui->chercher->text();
+
+        Evenement Ev(id_eve,type_eve,nom_eve,day_eve);
+        bool test=Ev.search(Ev.getnom());
+        if (test)
+        {
+            ui->table_eve->setModel(Ev.afficher());
+          ui->table_eve->setModel(Ev.search(nom_eve));
+
+           // QMessageBox::information(nullptr,QObject::tr("OK"),
+                   // QObject::tr("ajout effectue\n"
+                                 // "Click cancel to exit ."),QMessageBox::Cancel);
+        }
+        //else
+
+            //QMessageBox::critical(nullptr,QObject::tr("OK"),
+                    //QObject::tr("ajout effectue\n"
+                                //  "Click cancel to exit ."),QMessageBox::Cancel);
+
+}
+
+void MainWindow::on_pushButton_23_clicked()
+{
+
+    QString strStream;
+    QTextStream out(&strStream);
+
+    const int rowCount = ui->table_eve->model()->rowCount();
+    const int columnCount = ui->table_eve->model()->columnCount();
+QString refTitleName;
+    out <<  "<html>\n"
+                    "<head>\n"
+                    "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                <<  QString("<title>%1</title>\n").arg(refTitleName)
+                <<  "</head>\n"
+                    "<body bgcolor=#ffffff link=#5000A0>\n"
+                "<img src='D:/exerciceee/Atelier_Connexion/logo.png'>"
+"<h1>Tel: 29109983/45845634</h1>\n"
+"<h2>Email :Fitnessgym@gmail.com</h2>\n"
+"<center><h1>PDF produit </h1></center>\n"
+
+                    "<table width=80% height=100  border=1 cellspacing=0 cellpadding=2>\n";
+
+    // headers
+    out << "<thead><tr bgcolor=red>";
+    QString m_journal ="<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf8\" /></head><body><p>Ici le texte à emprimer</p></body></html>";
+
+    for (int column = 0; column < columnCount; column++)
+        if (!ui->table_eve->isColumnHidden(column))
+            out << QString("<th>%1</th>").arg(ui->table_eve->model()->headerData(column, Qt::Horizontal).toString());
+    out << "</tr></thead>\n";
+
+    // data table
+    for (int row = 0; row < rowCount; row++) {
+        out << "<tr>";
+        for (int column = 0; column < columnCount; column++) {
+            if (!ui->table_eve->isColumnHidden(column)) {
+                QString data = ui->table_eve->model()->data(ui->table_eve->model()->index(row, column)).toString().simplified();
+                out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+            }
+        }
+        out << "</tr>\n";
+    }
+
+    out <<  "</table>\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+
+
+        "</body>\n"
+        "</html>\n";
+
+    QTextDocument *document = new QTextDocument();
+    document->setHtml(strStream);
+
+    QPrinter printer;
+    QPixmap pixmap("aza.jpg");
+
+
+
+    QPrintDialog *dialog = new QPrintDialog(&printer, NULL);
+    if (dialog->exec() == QDialog::Accepted) {
+        QDate date;
+                    QTime time;
+                    date = date.currentDate();
+                    time = time.currentTime();
+                    QString modif ="\nFait le :\t" + date.toString("dddd dd MMMM yyyy") + " a " + time.toString();
+
+        document->print(&printer);
+    }
+
+    delete document;}
+
+void MainWindow::on_tri_eve_clicked()
+{
+    int id_eve=ui->chercher->text().toInt();
+
+    QDate day_eve=ui->dateEdit_3->date();
+
+        QString nom_eve=ui->chercher->text();
+        QString type_eve=ui->chercher->text();
+
+        Evenement Ev1(id_eve,nom_eve,type_eve,day_eve);
+        bool test=Ev1.Tri();
+        if (test)
+        {
+            ui->table_eve->setModel(Ev1.afficher());
+          ui->table_eve->setModel(Ev1.Tri());
+
+}
+
+}
+
+void MainWindow::on_update_3_clicked()
+{
+    int id_eve=ui->le_id->text().toInt();
+    QDate day_eve=ui->dateEdit_3->date();
+    QString nom_eve=ui->le_nom->text();
+    QString type_eve=ui->le_prenom->text();
+    Evenement Ev(id_eve,nom_eve,type_eve,day_eve);
+    bool test=Ev.update();
+    if (test)
+    {
+        ui->table_eve->setModel(Ev.afficher());
+
+        QMessageBox::information(nullptr,QObject::tr("OK"),
+                QObject::tr("Modification effectue\n"
+                              "Click cancel to exit ."),QMessageBox::Cancel);
+        ui->table_eve->setModel(Ev.afficher());
+    }
+    else
+
+        QMessageBox::critical(nullptr,QObject::tr("OK"),
+                QObject::tr("Modification non effectue\n"
+                              "Click cancel to exit ."),QMessageBox::Cancel);
+}
+
+void MainWindow::on_commandLinkButton_21_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(22);
+
+}
+
+void MainWindow::on_add1_10_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(25);
+
+}
+
+void MainWindow::on_pb_aj_clicked()
+{
+    int id_sp=ui->el_id->text().toInt();
+    QString nom_sp=ui->el_nom->text();
+    sponsor SP(id_sp,nom_sp);
+    bool test=SP.ajouter();
+    if(test)
+    {
+        //QMessageBox::information(nullptr, QObject::tr("OK"),
+                              //   QObject::tr("Ajout effectué\n"
+                                            // "Click Cancel  to exit."), QMessageBox::Cancel);
+        ui->table_sp->setModel(SP.affichersp());
+    }
+    //else
+      //  QMessageBox::critical(nullptr, QObject::tr("Not OK"),
+                             // QObject::tr("Ajout non effectué\n"
+                                         // "Click Cancel to exit"), QMessageBox::Cancel);
+}
+
+void MainWindow::on_pb_mod_clicked()
+{
+    int id_sp=ui->el_id->text().toInt();
+    QString nom_sp=ui->el_nom->text();
+    sponsor SP(id_sp,nom_sp);
+    bool test=SP.update();
+    if (test)
+    {
+        ui->table_sp->setModel(SP.affichersp());
+
+        QMessageBox::information(nullptr,QObject::tr("OK"),
+                QObject::tr("Modification effectue\n"
+                              "Click cancel to exit ."),QMessageBox::Cancel);
+        ui->table_sp->setModel(SP.affichersp());
+    }
+    else
+
+        QMessageBox::critical(nullptr,QObject::tr("OK"),
+                QObject::tr("Modification non effectue\n"
+                              "Click cancel to exit ."),QMessageBox::Cancel);
+}
+
+void MainWindow::on_pb_sup_clicked()
+{
+    sponsor SP1;
+    SP1.setid(ui->el_id->text().toInt());
+    bool test=SP1.supprimer(SP1.getid());
+    QMessageBox msgBox;
+
+    if (test)
+    {
+        ui->table_sp->setModel(SP.affichersp());
+
+        QMessageBox::information(nullptr,QObject::tr("OK"),
+                QObject::tr("supp effectue\n"
+                              "Click cancel to exit ."),QMessageBox::Cancel);
+        ui->table_sp->setModel(SP.affichersp());
+    }
+    else
+
+        QMessageBox::critical(nullptr,QObject::tr("OK"),
+                QObject::tr("supp non effectue\n"
+                              "Click cancel to exit ."),QMessageBox::Cancel);
+}
+
+void MainWindow::on_pb_recherche_clicked()
+{
+    int id_sp=ui->recherche->text().toInt();
+
+
+        QString nom_sp=ui->recherche->text();
+
+        sponsor SP(id_sp,nom_sp);
+        bool test=SP.search(SP.getnom());
+        if (test)
+        {
+            ui->table_sp->setModel(SP.affichersp());
+          ui->table_sp->setModel(SP.search(nom_sp));
+
+           // QMessageBox::information(nullptr,QObject::tr("OK"),
+                   // QObject::tr("ajout effectue\n"
+                                 // "Click cancel to exit ."),QMessageBox::Cancel);
+        }
+        //else
+
+            //QMessageBox::critical(nullptr,QObject::tr("OK"),
+                    //QObject::tr("ajout effectue\n"
+                                //  "Click cancel to exit ."),QMessageBox::Cancel);
+}
+
+void MainWindow::on_pushButton_24_clicked()
+{
+
+    QString strStream;
+    QTextStream out(&strStream);
+
+    const int rowCount = ui->table_sp->model()->rowCount();
+    const int columnCount = ui->table_sp->model()->columnCount();
+QString refTitleName;
+    out <<  "<html>\n"
+                    "<head>\n"
+                    "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                <<  QString("<title>%1</title>\n").arg(refTitleName)
+                <<  "</head>\n"
+                    "<body bgcolor=#ffffff link=#5000A0>\n"
+                "<img src='D:/exerciceee/integration/Atelier_Connexion/logo.png'>"
+"<h1>Tel: 29109983/45845634</h1>\n"
+"<h2>Email :Fitnessgym@gmail.com</h2>\n"
+"<center><h1>PDF sponsort </h1></center>\n"
+
+                    "<table width=80% height=100  border=1 cellspacing=0 cellpadding=2>\n";
+
+    // headers
+    out << "<thead><tr bgcolor=red>";
+    QString m_journal ="<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf8\" /></head><body><p>Ici le texte à emprimer</p></body></html>";
+
+    for (int column = 0; column < columnCount; column++)
+        if (!ui->table_eve->isColumnHidden(column))
+            out << QString("<th>%1</th>").arg(ui->table_sp->model()->headerData(column, Qt::Horizontal).toString());
+    out << "</tr></thead>\n";
+
+    // data table
+    for (int row = 0; row < rowCount; row++) {
+        out << "<tr>";
+        for (int column = 0; column < columnCount; column++) {
+            if (!ui->table_eve->isColumnHidden(column)) {
+                QString data = ui->table_sp->model()->data(ui->table_sp->model()->index(row, column)).toString().simplified();
+                out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+            }
+        }
+        out << "</tr>\n";
+    }
+
+    out <<  "</table>\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+
+
+        "</body>\n"
+        "</html>\n";
+
+    QTextDocument *document = new QTextDocument();
+    document->setHtml(strStream);
+
+    QPrinter printer;
+    QPixmap pixmap("aza.jpg");
+
+
+
+    QPrintDialog *dialog = new QPrintDialog(&printer, NULL);
+    if (dialog->exec() == QDialog::Accepted) {
+        QDate date;
+                    QTime time;
+                    date = date.currentDate();
+                    time = time.currentTime();
+                    QString modif ="\nFait le :\t" + date.toString("dddd dd MMMM yyyy") + " a " + time.toString();
+
+        document->print(&printer);
+    }
+
+    delete document;}
+
+void MainWindow::on_pushButton_25_clicked()
+{
+    int id_sp=ui->recherche->text().toInt();
+
+
+        QString nom_sp=ui->el_nom->text();
+
+        sponsor SP(id_sp,nom_sp);
+        bool test=SP.Tri2();
+        if (test)
+        {
+            ui->table_sp->setModel(SP.affichersp());
+          ui->table_sp->setModel(SP.Tri2());
+
+}
+
+}
+
+void MainWindow::on_commandLinkButton_22_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(23);
 
 }
