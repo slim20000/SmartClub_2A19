@@ -19,6 +19,9 @@
 #include <QObject>
 #include <QPrintDialog>
 #include <QPrinter>
+#include "sponsor.h"
+#include <ctime>
+
 
 //Test tuto Git
 

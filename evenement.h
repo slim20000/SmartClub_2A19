@@ -21,28 +21,38 @@
 #include <QObject>
 #include <QPrintDialog>
 #include <QPrinter>
+#include "sponsor.h"
+#include <ctime>
+#include <dos.h>
+#include "qcustomplot.h"
+
 
 class Evenement
 {
 public:
     Evenement();
-    Evenement(int,QString,QString);
+    Evenement(int,QString,QString,int);
     int getid();
     QString getnom();
-    QString getprenom();
+    QString gettype();
+    int getday();
     void setid(int);
     void setnom(QString);
-    void setprenom(QString);
+    void settype(QString);
+    void setday(int);
     bool ajouter();
     QSqlQueryModel* afficher();
     bool supprimer(int);
     bool update();
     QSqlQueryModel * search(QString);
+    QSqlQueryModel * Tri();
+    void upTime();
 
 
 private:
-    int id_eve;
+    int id_eve,day_eve;
     QString nom_eve, type_eve;
+    QDate date_eve;
 };
 
 #endif // EVENEMENT_H

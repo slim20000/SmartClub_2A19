@@ -20,6 +20,10 @@
 #include <QObject>
 #include <QPrintDialog>
 #include <QPrinter>
+#include "sponsor.h"
+#include <ctime>
+#include <dos.h>
+
 class connexion
 {
     QSqlDatabase db;

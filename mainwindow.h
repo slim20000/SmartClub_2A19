@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "arduino.h"
 #include <QMainWindow>
 #include <QMainWindow>
 #include <QMessageBox>
@@ -19,8 +20,20 @@
 #include <QSqlQuery>
 #include <QtDebug>
 #include <QObject>
-#include <QPrintDialog>
 #include <QPrinter>
+#include <QPrintDialog>
+#include <QPrinterInfo>
+#include <QtPrintSupport>
+#include <ctime>
+#include <dos.h>
+#include "qcustomplot.h"
+
+
+#include <QPixmap>
+#include <QPainter>
+#include "sponsor.h"
+#include <QPrintPreviewDialog>
+#include <QTextBrowser>
 
 
 QT_BEGIN_NAMESPACE
@@ -34,6 +47,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void update_label();
 
 private slots:
 
@@ -48,8 +62,44 @@ private slots:
 
     void on_actionImprimer_triggered();
 
+
+    void on_pb_aj_clicked();
+
+    void on_pb_mod_clicked();
+
+    void on_pb_sup_clicked();
+
+
+    void on_pb_recherche_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_actionImprimer_client_triggered();
+
+    void on_pushButton_4_clicked();
+
+    void on_tri_eve_clicked();
+
+    //void makePlot();
+
+    void updateTime();
+
+    void upTime();
+
+
+    //void on_pushButton_4_clicked();
+
+    //void on_pushButton_clicked();
+
+    //void on_pushButton_2_clicked();
+
+
 private:
     Ui::MainWindow *ui;
     Evenement Etmp;
+    sponsor SP;
+    QTimer *timer_1s;
+    //arduino A;
+    QByteArray data;
 };
 #endif // MAINWINDOW_H

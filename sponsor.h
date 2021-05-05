@@ -19,8 +19,15 @@
 #include <QSqlQueryModel>
 #include <QtDebug>
 #include <QObject>
-#include <QPrintDialog>
 #include <QPrinter>
+#include <QPrintDialog>
+#include <QPixmap>
+#include <QPainter>
+#include <ctime>
+#include <dos.h>
+#include "qcustomplot.h"
+
+
 
 class sponsor
 {
@@ -34,10 +41,11 @@ public:
     void setnom(QString);
     void setprenom(QString);
     bool ajouter();
-    QSqlQueryModel* afficher();
+    QSqlQueryModel* affichersp();
     bool supprimer(int);
     bool update();
     QSqlQueryModel * search(QString);
+    QSqlQueryModel * Tri2();
 
 
 private:
