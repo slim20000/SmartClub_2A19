@@ -35,6 +35,13 @@
 #include <QPrintPreviewDialog>
 #include <QTextBrowser>
 
+#include<QApplication>
+#include <QWidget>
+#include <QPushButton>
+#include <QtGui>
+#include <QFont>
+#include <QtGui/QImage>
+#include <QImage>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

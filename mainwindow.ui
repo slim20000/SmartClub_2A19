@@ -25,7 +25,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">#type{color: white;}
-QGroupBox{background-image: url(:/img/gym4.jpg);}
+
 
 
 
@@ -101,7 +101,7 @@ QTableWidget QTableCornerButton::section {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">

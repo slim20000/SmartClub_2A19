@@ -46,7 +46,13 @@
 #include <QtGui/qbrush.h>
 #include <QtGui/qtextoption.h>
 
-
+#include<QApplication>
+#include <QWidget>
+#include <QPushButton>
+#include <QtGui>
+#include <QFont>
+#include <QtGui/QImage>
+#include <QImage>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

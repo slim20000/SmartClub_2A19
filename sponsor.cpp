@@ -23,6 +23,13 @@
 #include <ctime>
 #include <dos.h>
 
+#include<QApplication>
+#include <QWidget>
+#include <QPushButton>
+#include <QtGui>
+#include <QFont>
+#include <QtGui/QImage>
+#include <QImage>
 
 sponsor::sponsor()
 {

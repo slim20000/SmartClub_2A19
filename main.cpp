@@ -30,6 +30,13 @@
 #include <QStandardItemModel>
 #include <QTableView>
 
+#include<QApplication>
+#include <QWidget>
+#include <QPushButton>
+#include <QtGui>
+#include <QFont>
+#include <QtGui/QImage>
+#include <QImage>
 
 int main(int argc, char *argv[])
 {
