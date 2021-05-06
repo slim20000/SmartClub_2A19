@@ -1,6 +1,6 @@
 #include "statistique.h"
 #include "ui_statistique.h"
-
+//comitting...
 statistique::statistique(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::statistique)
